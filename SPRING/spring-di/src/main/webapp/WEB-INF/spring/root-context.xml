@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+
+	<!-- BoardDAO 빈을 정의 -->
+	<bean id="boardDAO" class="com.aloha.spring.dao.BoardDAO"></bean>
+	
+	<!-- 위를 먼저 정의해야 아래 코드를 정의할 수 있음 -->
+	
+	<!-- BoardService 빈을 정의 -->
+	<bean id="boardServiceImpl" class="com.aloha.spring.service.BoardServiceImpl">
+		<constructor-arg ref="boardDAO" />
+		<!-- constructor-arg name="test" vlaue="100" 으로도 만들 수 있음 
+		     그 대신 BoardServiceImpl 에 
+		     @Auotwired
+		     public BoardServiceImpl(int test){
+		     this.test = test;
+		     }
+		     추가해줘야함 -->
+	</bean>
+
+</beans>
