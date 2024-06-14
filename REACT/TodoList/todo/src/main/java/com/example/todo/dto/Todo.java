@@ -11,4 +11,5 @@ public class Todo {
     private int status;
     private Date regDate;
     private Date updDate;
+    
 }
