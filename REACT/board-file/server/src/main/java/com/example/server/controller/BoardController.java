@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -83,9 +84,12 @@ public class BoardController {
         }
     }
     
+     
     @PutMapping()
     // public ResponseEntity<?> update(@RequestBody Board board) {
     public ResponseEntity<?> update(Board board) {
+
+        log.info(board.toString());
         try {
             int result = boardService.update(board);
             if(result > 0)
@@ -96,15 +100,15 @@ public class BoardController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    
     
     @DeleteMapping("/{no}")
-    public ResponseEntity<?> destroy(@PathVariable("no") int no) {
+    public ResponseEntity<?> destroy(@PathVariable("no") Integer no) {
         try {
             int result = boardService.delete(no);
-            if(result > 0)
-                return new ResponseEntity<>("Delete Result", HttpStatus.OK);
-            else
-                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            List<Board> boardList = boardService.list();
+            return new ResponseEntity<>(boardList, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
