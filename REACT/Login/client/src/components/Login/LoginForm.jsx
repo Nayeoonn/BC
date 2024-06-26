@@ -2,15 +2,15 @@ import React, { useContext } from 'react'
 import { LoginContext } from '../../contexts/LoginContextProvider'
 import './LoginForm.css'
 const LoginForm = () => {
-    const { login } = useContext(LoginContext)
+    const { login } = useContext(LoginContext)  // LoginContext의 login 함수
 
-    const onLogin = (e) => {
-        e.preventDefault()
-        const form = e.target
-        const username = form.username.value
-        const password = form.password.value
+    const onLogin = (e) => {                    
+        e.preventDefault()                      // 기본 이벤트 방지
+        const form = e.target                   // <form>요소               
+        const username = form.username.value    // 아이디   - <form> 아래 input name="username"의 value
+        const password = form.password.value    // 비밀번호 - <form> 아래 input name="password"의 value
 
-        login( username, password )
+        login( username, password )             // 로그인 처리 요청
     }
     return (
         <div className="form">
