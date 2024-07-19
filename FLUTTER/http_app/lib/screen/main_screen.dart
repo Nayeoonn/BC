@@ -14,22 +14,16 @@ class _MainScreenState extends State<MainScreen> {
       appBar: AppBar(
         title: Text("메인 화면"),
       ),
-      body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, "/board/list");
-              },
-              child: Text("게시글 목록"),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue.shade600,
-                foregroundColor: Colors.white,
-              ),
-            )
-          ],
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pushNamed(context, "/board/list");
+          },
+          child: Text("게시글 목록"),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.blueAccent,
+            foregroundColor: Colors.white,
+          ),
         ),
       ),
     );
